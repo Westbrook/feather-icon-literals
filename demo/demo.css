@@ -1,0 +1,11 @@
+.demo {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-row-gap: 20px;
+}
+
+span {
+  display: block;
+  padding: 5px 0 0;
+}

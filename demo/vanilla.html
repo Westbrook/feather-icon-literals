@@ -1,15 +1,4 @@
-<style>
-  .demo {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
-    grid-row-gap: 20px;
-  }
-  span {
-    display: block;
-    padding: 5px 0 0;
-  }
-</style>
+<link rel="stylesheet" href="demo.css" />
 <h1>Feather Icon Literals Demo: Vanila JS</h1>
 <p>Use <code>el.innerHTML</code> to apply the non-flavored literal as if it were a string.</p>
 <p><a href="../demo/">See all demos</a></p>
@@ -17,16 +6,9 @@
 <div class="demo"></div>
 <script type="module">
   import * as icons from '../lib/icons.js';
+  import {tag} from '../lib/custom-tag.js';
+  import {listIcons} from './builder.js';
   let demo = document.querySelector('.demo');
-  for (let icon in icons) {
-    if (icon === 'setCustomTemplateLiteralTag') continue;
-    let demoEl = document.createElement('div');
-    let nameEl = document.createElement('span');
-    let iconEl = document.createElement('div');
-    nameEl.innerHTML = icon;
-    iconEl.innerHTML = icons[icon]();
-    demoEl.appendChild(iconEl);
-    demoEl.appendChild(nameEl);
-    demo.appendChild(demoEl);
-  }
+  let demos = listIcons(icons, tag);
+  demo.innerHTML = demos.join('');
 </script>

@@ -1,15 +1,4 @@
-<style>
-  .demo {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
-    grid-row-gap: 20px;
-  }
-  span {
-    display: block;
-    padding: 5px 0 0;
-  }
-</style>
+<link rel="stylesheet" href="demo.css" />
 <h1>Feather Icon Literals Demo: lit-html</h1>
 <p>Use the lit-html parser and renderer to append icons to the page via <code>render()</code></p>
 <p><a href="../demo/">See all demos</a></p>
@@ -18,17 +7,9 @@
 <script type="module">
   import * as icons from '../lib/icons.js';
   import {html, render} from 'https://unpkg.com/lit-html/lit-html.js?module';
+  import {listIcons} from './builder.js';
   icons.setCustomTemplateLiteralTag(html);
   let demo = document.querySelector('.demo');
-  let demos = [];
-  for (let icon in icons) {
-    if (icon === 'setCustomTemplateLiteralTag') continue;
-    demos.push(html`
-      <div>
-        <div>${icons[icon]()}</div>
-        <span>${icon}</span>
-      </div>
-    `);
-  }
+  let demos = listIcons(icons, html);
   render(demos, demo)
 </script>
