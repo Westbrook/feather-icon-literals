@@ -54,7 +54,7 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
 
     fs.writeFileSync(location, icon, 'utf-8');
 
-    const exportString = `export ${ComponentName} from './icons/${id}';\r\n`;
+    const exportString = `export {${ComponentName}} from './icons/${id}.js';\r\n`;
     fs.appendFileSync(
       path.join(rootDir, 'lib', 'icons.js'),
       exportString,
