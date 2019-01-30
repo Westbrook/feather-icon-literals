@@ -10,25 +10,25 @@
     padding: 5px 0 0;
   }
 </style>
-<h1>Feather Icon Literals Demo: Preact</h1>
-<p>Use the <code>htm</code> parser and <code>preact</code> renderer to append icons to the page via <code>render()</code></p>
+<h1>Feather Icon Literals Demo: hyperHTML</h1>
+<p>Use the hyperHTML parser and renderer to append icons to the page via <code>hyper(el)`...`</code></p>
 <p><a href="/demo/">See all demos</a></p>
 <h2>Icons</h2>
-<div class="render-zone"></div>
+<div class="demo"></div>
 <script type="module">
   import * as icons from '../lib/icons.js';
-  import { html, render } from 'https://unpkg.com/htm/preact/standalone.mjs'
-  icons.setCustomTemplateLiteralTag(html);
-  let renderZone = document.querySelector('.render-zone');
+  import {hyper} from 'https://unpkg.com/hyperhtml?module';
+  icons.setCustomTemplateLiteralTag(hyper);
+  let demo = document.querySelector('.demo');
   let demos = [];
   for (let icon in icons) {
     if (icon === 'setCustomTemplateLiteralTag') continue;
-    demos.push(html`
+    demos.push(hyper`
       <div>
         <div>${icons[icon]()}</div>
         <span>${icon}</span>
       </div>
     `);
   }
-  render(html`<div className="demo">${demos}</div>`, renderZone)
+  hyper(demo)`${demos}`;
 </script>

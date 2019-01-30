@@ -10,14 +10,17 @@
     padding: 5px 0 0;
   }
 </style>
-<h1>Feather Icon Literals Demo: Preact</h1>
-<p>Use the <code>htm</code> parser and <code>preact</code> renderer to append icons to the page via <code>render()</code></p>
+<h1>Feather Icon Literals Demo: React</h1>
+<p>Use the <code>htm</code> parser and <code>react</code> renderer to append icons to the page via <code>render()</code></p>
 <p><a href="/demo/">See all demos</a></p>
 <h2>Icons</h2>
 <div class="render-zone"></div>
+<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
 <script type="module">
   import * as icons from '../lib/icons.js';
-  import { html, render } from 'https://unpkg.com/htm/preact/standalone.mjs'
+  import htm from 'https://unpkg.com/htm?module'
+  const html = htm.bind(React.createElement);
   icons.setCustomTemplateLiteralTag(html);
   let renderZone = document.querySelector('.render-zone');
   let demos = [];
@@ -30,5 +33,5 @@
       </div>
     `);
   }
-  render(html`<div className="demo">${demos}</div>`, renderZone)
+  ReactDOM.render(html`<div className="demo">${demos}</div>`, renderZone)
 </script>
