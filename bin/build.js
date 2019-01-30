@@ -29,6 +29,12 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
         if (x === 'stroke') {
           $(el).attr(x, 'currentColor');
         }
+        if (el.name === 'svg') {
+          $(el).attr('aria-hidden', '...');
+          if (x === 'width' || x === 'height') {
+            $(el).attr(x, '${' + x + '}');
+          }
+        }
       });
     });
 
@@ -36,7 +42,10 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
       import {tag as html} from '../custom-tag.js';
 
       export {setCustomTemplateLiteralTag} from '../custom-tag.js';
-      export const ${ComponentName} = () => html\`${$('svg').toString()}\`;
+      export const ${ComponentName} = ({width = 24, height = 24, hidden}) => html\`${$('svg')
+        .toString()
+        .replace('aria-hidden="..."', 'aria-hidden="${hidden ? \'true\' : \'false\'}"')
+      }\`;
     `;
 
     const icon = prettier.format(iconLiteral, {
