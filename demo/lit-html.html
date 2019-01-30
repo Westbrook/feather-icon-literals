@@ -10,22 +10,24 @@
     padding: 5px 0 0;
   }
 </style>
-<h1>Feather Icon Literals Demo: Vanila JS</h1>
-<p>Use <code>el.innerHTML</code> to apply the non-flavored literal as if it were a string.</p>
+<h1>Feather Icon Literals Demo: lit-html</h1>
+<p>Use the lit-html parser and render to append icons to the page via <code>render()</code></p>
 <h2>Icons</h2>
 <div class="demo"></div>
 <script type="module">
   import * as icons from '../lib/icons.js';
+  import {html, render} from 'https://unpkg.com/lit-html/lit-html.js?module';
+  icons.setCustomTemplateLiteralTag(html);
   let demo = document.querySelector('.demo');
+  let demos = [];
   for (let icon in icons) {
     if (icon === 'setCustomTemplateLiteralTag') continue;
-    let demoEl = document.createElement('div');
-    let nameEl = document.createElement('span');
-    let iconEl = document.createElement('div');
-    nameEl.innerHTML = icon;
-    iconEl.innerHTML = icons[icon]();
-    demoEl.appendChild(iconEl);
-    demoEl.appendChild(nameEl);
-    demo.appendChild(demoEl);
+    demos.push(html`
+      <div>
+        <div>${icons[icon]()}</div>
+        <span>${icon}</span>
+      </div>
+    `);
   }
+  render(demos, demo)
 </script>
