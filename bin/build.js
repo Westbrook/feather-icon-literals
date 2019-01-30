@@ -23,12 +23,7 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
 
     $('*').each((index, el) => {
       Object.keys(el.attribs).forEach(x => {
-        if (x.includes('-')) {
-          $(el)
-            .attr(camelcase(x), el.attribs[x])
-            .removeAttr(x);
-        }
-        if (x === 'width' || x === 'height') {
+        if (x === 'class') {
           $(el).removeAttr(x);
         }
         if (x === 'stroke') {
