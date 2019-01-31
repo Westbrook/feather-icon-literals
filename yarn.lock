@@ -25,15 +25,10 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-camelcase@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
-  integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
-
-camelcase@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
-  integrity sha512-faqwZqnWxbxn+F1d399ygeamQNy3lPp/H9H6rNrqYh4FSVCtcY+3cub1MxA8o9mDd55mM8Aghuu/kuyYA6VTsA==
+case@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/case/-/case-1.6.1.tgz#fa9ce79bb6f68f21650c419ae9c47b079308714f"
+  integrity sha512-N0rDB5ftMDKANGsIBRWPWcG0VIKtirgqcXb2vKFi66ySAjXVEwbfCN7ass1mkdXO8fbol3RfbWlQ9KyBX2F/Gg==
 
 cheerio@^1.0.0-rc.2:
   version "1.0.0-rc.2"
@@ -254,13 +249,6 @@ string_decoder@^1.1.1:
   integrity sha512-6YqyX6ZWEYguAxgZzHGL7SsCeGx3V2TtOTqZz1xSTSWnqsbWwbptafNyvf/ACquZUXV3DANr5BDIwNYe1mN42w==
   dependencies:
     safe-buffer "~5.1.0"
-
-uppercamelcase@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/uppercamelcase/-/uppercamelcase-3.0.0.tgz#380b321b8d73cba16fec4d752a575152d1ef7317"
-  integrity sha1-OAsyG41zy6Fv7E11KldRUtHvcxc=
-  dependencies:
-    camelcase "^4.1.0"
 
 util-deprecate@^1.0.1:
   version "1.0.2"

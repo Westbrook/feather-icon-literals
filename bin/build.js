@@ -1,10 +1,9 @@
 const fs = require('fs');
 const glob = require('glob');
-const camelcase = require('camelcase');
-const uppercamelcase = require('uppercamelcase');
 const path = require('path');
 const cheerio = require('cheerio');
 const prettier = require('prettier');
+const Case = require('case');
 
 const rootDir = path.join(__dirname, '..');
 
@@ -14,14 +13,19 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
   icons.forEach(i => {
     const svg = fs.readFileSync(i, 'utf-8');
     const id = path.basename(i, '.svg');
-    const ComponentName = (id === 'github') ? 'GitHub' : uppercamelcase(id);
+    const ComponentName = (id === 'github') ? 'GitHub' : Case.pascal(id);
     const $ = cheerio.load(svg, {
       xmlMode: true,
     });
+    const title = Case.capital(id);
     const fileName = path.basename(i).replace('.svg', '.js');
     const location = path.join(rootDir, 'lib/icons', fileName);
 
     $('*').each((index, el) => {
+      if (el.name === 'svg') {
+        $(el).prepend('<desc>${desc}</desc>');
+        $(el).prepend('<title>${title}</title>');
+      }
       Object.keys(el.attribs).forEach(x => {
         if (x === 'class') {
           $(el).removeAttr(x);
@@ -42,7 +46,7 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
       import {tag as html} from '../custom-tag.js';
 
       export {setCustomTemplateLiteralTag} from '../custom-tag.js';
-      export const ${ComponentName} = ({width = 24, height = 24, hidden}) => html\`${$('svg')
+      export const ${ComponentName} = ({width = 24, height = 24, hidden, title = '${title}', desc = '${title}'}) => html\`${$('svg')
         .toString()
         .replace('aria-hidden="..."', 'aria-hidden="${hidden ? \'true\' : \'false\'}"')
       }\`;
