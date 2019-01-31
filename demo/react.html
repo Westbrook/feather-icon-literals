@@ -14,5 +14,6 @@
   icons.setCustomTemplateLiteralTag(html);
   let renderZone = document.querySelector('.render-zone');
   let demos = listIcons(icons, html);
+  console.log(icons.Activity() === icons.Activity());
   ReactDOM.render(html`<div className="demo">${demos}</div>`, renderZone)
 </script>

@@ -48,7 +48,13 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
       import {tag as html} from '../custom-tag.js';
 
       export {setCustomTemplateLiteralTag} from '../custom-tag.js';
-      export const ${ComponentName} = ({width = 24, height = 24, hidden, title = '${title}', desc = '${title}'}) => html\`${$('svg')
+      export const ${ComponentName} = ({width: width, height: height, hidden: hidden, title: title, desc: desc} = {
+        width: 24,
+        height: 24,
+        hidden: false,
+        title: '${title}',
+        desc: '${title}',
+      }) => html\`${$('svg')
         .toString()
         .replace('aria-hidden="..."', 'aria-hidden="${hidden ? \'true\' : \'false\'}"')
       }\`;
