@@ -25,6 +25,9 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
       if (el.name === 'svg') {
         $(el).prepend('<desc>${desc}</desc>');
         $(el).prepend('<title>${title}</title>');
+        $(el).attr('aria-hidden', '...');
+        $(el).attr('role', 'img');
+        $(el).attr('title', '${title}');
       }
       Object.keys(el.attribs).forEach(x => {
         if (x === 'class') {
@@ -34,7 +37,6 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
           $(el).attr(x, 'currentColor');
         }
         if (el.name === 'svg') {
-          $(el).attr('aria-hidden', '...');
           if (x === 'width' || x === 'height') {
             $(el).attr(x, '${' + x + '}');
           }

@@ -4,7 +4,7 @@ export const listIcons = (icons, html) => {
     if (icon === 'setCustomTemplateLiteralTag') continue;
     demos.push(html`
       <div>
-        <div>${icons[icon]({width: 50, height: 50, hidden: 1})}</div>
+        <div>${icons[icon]({width: 50, height: 50, hidden: 0})}</div>
         <span>${icon}</span>
       </div>
     `);
