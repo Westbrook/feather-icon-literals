@@ -17,6 +17,6 @@
     "prettier": "^1.16.1"
   },
   "scripts": {
-    "build": "node ./bin/build"
+    "build": "node ./bin/build feather-icons/dist/icons"
   }
 }

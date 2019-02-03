@@ -7,7 +7,9 @@ const Case = require('case');
 
 const rootDir = path.join(__dirname, '..');
 
-glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => {
+const iconsPath = process.argv.slice(2)[0];
+
+glob(`${rootDir}/node_modules/${iconsPath}/**.svg`, (err, icons) => {
   fs.writeFileSync(path.join(rootDir, 'lib', 'icons.js'), '', 'utf-8');
 
   icons.forEach(i => {
