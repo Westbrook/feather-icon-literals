@@ -23,11 +23,12 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
 
     $('*').each((index, el) => {
       if (el.name === 'svg') {
-        $(el).prepend('<desc>${desc}</desc>');
-        $(el).prepend('<title>${title}</title>');
+        $(el).prepend('<desc />');
+        $(el).prepend('<title id="${`title-' + id + '-${count}`}">${title}</title>');
         $(el).attr('aria-hidden', '...');
         $(el).attr('role', 'img');
-        $(el).attr('title', '${title}');
+        $(el).attr('aria-labelledby', '${`title-' + id + '-${count}`}');
+        $(el).attr('aria-describedby', '${`title-' + id + '-${count}`}');
       }
       Object.keys(el.attribs).forEach(x => {
         if (x === 'class') {
@@ -46,6 +47,7 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
 
     const iconLiteral = `
       import {tag as html} from '../custom-tag.js';
+      let iconCount = 0;
 
       export {setCustomTemplateLiteralTag} from '../custom-tag.js';
       export const ${ComponentName} = ({
@@ -53,11 +55,18 @@ glob(`${rootDir}/node_modules/feather-icons/dist/icons/**.svg`, (err, icons) => 
         height = 24,
         hidden = false,
         title = '${title}',
-        desc = '${title}',
-      } = {},) => html\`${$('svg')
-        .toString()
-        .replace('aria-hidden="..."', 'aria-hidden="${hidden ? \'true\' : \'false\'}"')
-      }\`;
+        desc,
+      } = {},) => {
+        const count = iconCount++;
+        return html\`${$('svg')
+          .toString()
+          .replace('aria-hidden="..."', 'aria-hidden="${hidden ? \'true\' : \'false\'}"')
+          .replace(
+            '<desc/>',
+            '${desc ? html`<desc id="${`desc-' + id + '-${count}`}">${desc}</desc>` : html``}'
+          )
+        }\`;
+      }
     `;
 
     const icon = prettier.format(iconLiteral, {
