@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="demo.css" />
+<h1>Feather Icon Literals Demo: React</h1>
+<p>Use the <code>react</code> parser and renderer in conjunction with <code>dangerouslySetInnerHTML</code></p>
+<p><a href="../demo/">See all demos</a></p>
+<h2>Icons</h2>
+<div class="render-zone"></div>
+<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.24.2/babel.min.js"
+      charset="utf-8"></script>
+
+<script type="text/babel">
+  function renderDemo(demos) {
+    let renderZone = document.querySelector('.render-zone');
+    ReactDOM.render(<div className="demo" dangerouslySetInnerHTML={demos}></div>, renderZone);
+  }
+  if (window.demos) {
+    renderDemo({__html: window.demos.join('')});
+  }
+</script>
+<script type="module">
+  import * as icons from '../lib/icons.js';
+  import {listIcons} from './builder.js';
+  import {tag} from '../lib/custom-tag.js';
+  window.demos = listIcons(icons, tag);
+</script>
