@@ -13,10 +13,12 @@
     "feather-icons": "^4.14.0",
     "fs": "^0.0.1-security",
     "glob": "^7.1.3",
+    "http-server": "^0.11.1",
     "path": "^0.12.7",
     "prettier": "^1.16.1"
   },
   "scripts": {
-    "build": "node ./bin/build feather-icons/dist/icons"
+    "build": "node ./bin/build feather-icons/dist/icons",
+    "serve": "http-server"
   }
 }
