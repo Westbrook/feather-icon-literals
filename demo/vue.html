@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="demo.css" />
+<script src="https://unpkg.com/vue"></script>
+<h1>Feather Icon Literals Demo: Vue.js</h1>
+<p>Use <code>v-html</code> to apply the non-flavored literal as if it were a string.</p>
+<p><a href="../demo/">See all demos</a></p>
+<h2>Icons</h2>
+<div id="app">
+  <icon-demo></icon-demo>
+</div>
+
+<script type="module">
+import * as icons from '../lib/icons.js';
+
+// Define a new component called button-counter
+Vue.component('icon-demo', {
+  data: function () {
+    return {
+      icons: icons
+    }
+  },
+  template: `
+    <div class="demo">
+      <div v-for="(icon, key) in icons">
+        <template v-if="key !== 'setCustomTemplateLiteralTag'">
+          <div v-html="icon({width: 50, height: 50, hidden: 0})"></div>
+          <span>{{key}}</span>
+        </template>
+      </div>
+    </div>
+  `
+})
+
+new Vue({
+  el: '#app',
+})
+</script>
