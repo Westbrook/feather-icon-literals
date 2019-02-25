@@ -1,6 +1,6 @@
 {
   "name": "feather-icon-literals",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "The Feather Icons you know and love as Template Literals tagged with a settable processor.",
   "main": "lib/icons.js",
   "module": "lib/icons.js",
@@ -20,5 +20,9 @@
   "scripts": {
     "build": "node ./bin/build feather-icons/dist/icons",
     "serve": "http-server"
-  }
+  },
+  "homepage": "https://westbrook.github.io/feather-icon-literals/",
+  "files": [
+    "/lib/"
+  ]
 }
