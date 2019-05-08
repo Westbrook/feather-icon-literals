@@ -11,5 +11,20 @@
   icons.setCustomTemplateLiteralTag(html);
   let demo = document.querySelector('.demo');
   let demos = listIcons(icons, html);
-  render(demos, demo)
+  let configurator = html`
+    <div>
+      <label for="color">Icon Color:</label>
+      <input type="color" id="color" name="color" @input=${changeColor} />
+      <label for="size">Icon Size:</label>
+      <input type="range" id="size" name="size" value="50" min="25" max="75" step="5" @input="${changeSize}" />
+    </div>
+  `;
+  render([configurator, demos], demo);
+  function changeColor(e) {
+    demo.style.color = e.target.value;
+  }
+  function changeSize(e) {
+    let demos = listIcons(icons, html, {width: e.target.value, height: e.target.value, hidden: 0});
+    render([configurator, demos], demo);
+  }
 </script>
