@@ -1,6 +1,6 @@
 {
   "name": "feather-icon-literals",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "The Feather Icons you know and love as Template Literals tagged with a settable processor.",
   "main": "lib/icons.js",
   "module": "lib/icons.js",
