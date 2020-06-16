@@ -1,9 +1,10 @@
 {
   "name": "feather-icon-literals",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "The Feather Icons you know and love as Template Literals tagged with a settable processor.",
   "main": "lib/icons.js",
   "module": "lib/icons.js",
+  "sideEffects": false,
   "repository": "https://github.com/Westbrook/feather-icon-literals",
   "author": "Westbrook Johnson <westbrook.johnson@gmail.com>",
   "license": "MIT",
