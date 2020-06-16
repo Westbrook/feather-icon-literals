@@ -13,13 +13,13 @@
     "feather-icons": "^4.28.0",
     "fs": "^0.0.1-security",
     "glob": "^7.1.6",
-    "http-server": "^0.12.3",
     "path": "^0.12.7",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "servor": "^4.0.2"
   },
   "scripts": {
     "build": "node ./bin/build feather-icons/dist/icons",
-    "serve": "http-server"
+    "serve": "servor"
   },
   "homepage": "https://westbrook.github.io/feather-icon-literals/",
   "files": [
